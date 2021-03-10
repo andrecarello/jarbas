@@ -1,0 +1,22 @@
+/*
+ Author: Oston <ti@oston.io>
+ Name: Vue Base
+ Description: Code for Vue projects
+ File: app.scss
+ Location: /
+*/
+
+// -> import core
+@import "./assets/sass/core/settings";
+@import "./assets/sass/core/functions";
+@import "./assets/sass/core/extends";
+@import "./assets/sass/core/mixins";
+@import "./assets/sass/core/colors";
+@import "./assets/sass/core/fonts";
+
+@import "./assets/sass/components/button";
+@import "./assets/sass/layout/global";
+@import "./assets/sass/layout/display";
+@import "./assets/sass/layout/sizes";
+
+@import "./assets/sass/components/toast";

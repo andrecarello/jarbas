@@ -1,0 +1,49 @@
+//
+// Author: OSTON <ti@oston.io>
+// Name: Pomodoro
+// Description: Nuxt styles
+// File: settings.scss
+// Location: @/assets/sass/core
+//
+
+// define [ language ]
+$lang: 'en';
+
+// define [ locations ]
+$fonts_location: '/assets/fonts/';
+$images_location: '/assets/images/';
+$backgrounds_location: '#{$images_location}backgrounds/';
+
+// define [ browser options ]
+$browser-context: 16;
+$box-shadow: 4px 4px 10px rgba(#000000, 0.16);
+$elevation: 2px 2px 20px;
+
+// define [ suffix and preffix ]
+$prefix: '';
+$suffix: '';
+
+// define
+$gutter: 20px;
+$margin: 20px;
+$radius: 4px;
+
+// define [ breapoints ]
+$breakpoints: (sm : 576px, md : 768px, lg : 992px, xl : 1200px) !default;
+
+// define [ animations and timing ]
+$ease: ease;
+$timing: .25s;
+
+// cria o array de fonts separados por espaco
+// ex: "Proxima Nova" ProximaNova-Regular 400,
+// $font, $name, $local, $weight
+$fonts: (
+  "Tim Sans" TIMSansWeb-Regular 400,
+  "Tim Sans" TIMSansWeb-Medium 500,
+  "Tim Sans" TIMSansWeb-Bold 600,
+  "Tim Sans" TIMSansWeb-Heavy 900,
+);
+
+// create [ WEBFONTS ]
+$open_sans: "Open Sans";

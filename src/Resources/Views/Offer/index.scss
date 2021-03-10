@@ -1,0 +1,320 @@
+//
+// Author: OSTON <ti@oston.io>
+// Name: Vue Base
+// Description: Code for Vue projects
+// File: index.scss
+// Location: @/Views/offer
+//
+
+@mixin __offer-theme($color) {
+	&\:close {
+		border-color: color($color);
+	} // close
+
+	&\:close,
+	&\:company {
+		@include text-color($color);
+	}
+
+	&\:brand {
+		@include background($color);
+	} // brand
+
+	&\:content {
+		&-discount,
+		&-discount-default,
+		&-button {
+			@include background($color);
+		} // discount/discount-default/button
+	} // content
+
+	&\:collapse {
+		$self: &;
+
+		&-title {
+			@include text-color($color);
+		} // title
+
+		&-link {
+			> div {
+				@include background($color);
+			} // -> >div
+		} // link
+	} // collapse
+
+  &\:step-content p span,
+	&-content p span {
+		@include text-color($color);
+	} // content
+} // step
+
+.offer {
+	$self: &;
+
+	@include padding((bottom: 20));
+
+	&\:header {
+		@include position(relative, 2);
+	} // header
+
+	&\:close {
+		@include position(absolute, (
+      top: 15,
+      right: 15
+    ), 10);
+
+		@include circle(40);
+		@include box-shadow($box-shadow);
+		@include background(white, .5);
+		@include flex(center, center);
+		border: rem(2) solid color(red);
+		@include text-color(red);
+	} // close
+
+	&\:figure {
+		$h: 463;
+		$w: 570;
+		$height: ($h * 100) / $w;
+
+		@include flex(center, center);
+		@include width(auto);
+		// fix this
+		@include height($height, vw);
+		@include height(400, max);
+		overflow: hidden;
+		@include background(grey-100);
+
+		img {
+			@include block();
+			@include width(auto);
+			@include height($height, vw);
+			object-fit: cover;
+		}
+	} // figure
+
+	&\:brand {
+		@include height(14);
+		@include background(red);
+		@include flex(flex-end, center);
+		@include position(relative, 3);
+		@include padding(horizontal, 20);
+		@include margin((bottom: 50));
+
+		figure {
+			@include radius(4);
+			@include box-shadow($box-shadow);
+			overflow: hidden;
+			@include size(75);
+			@include background(grey-100);
+		}
+
+		img {
+			object-fit: cover;
+			@include size(75);
+		}
+	} // brand
+
+	&\:company {
+		@include padding(horizontal, 20);
+		@include margin((bottom: 30));
+
+		@include text-style((
+      size: 24,
+      weight: 900
+    ), red);
+	} // company
+
+	&\:content {
+		@include padding(horizontal, 20);
+		@include box-shadow($box-shadow);
+
+		&-actions {
+			@include flex(flex-start, center);
+			@include height(53);
+			@include margin((left: -20));
+		} // actions
+
+		&-discount,
+		&-discount-default {
+			@include background(red);
+			border-bottom-right-radius: rem(4);
+			@include flex(center, center);
+			@include height(53);
+			@include width(160, min);
+			@include margin((
+        right: auto
+      ));
+
+			@include text-style((
+        size: 20
+      ), white);
+
+			strong {
+				@include text-style((
+          size: 30,
+          weight: bold
+        ));
+			}
+		} // discount
+
+		&-button {
+			@include flex(center, center);
+			@include background(red);
+			@include size(56, 160);
+			@include radius(4);
+
+			@include text-style((
+        size: 20,
+        weight: bold
+      ), white);
+
+			&-disabled {
+				pointer-events: none;
+				touch-action: none;
+
+				@include background(grey-200);
+			} // disabled
+		} // button
+	} // content
+
+	&\:description {
+		@include margin((top: 40));
+
+		@include text-style((
+      size: 14,
+      line-height: 22
+    ), grey);
+	} // description
+
+	&\:collapse {
+		$self: &;
+
+		overflow: hidden;
+		height: 0;
+		@include margin((top: 20));
+
+		@include transition(height .2s ease);
+
+		&-title {
+			@include margin((bottom: 20));
+
+			@include text-style((
+        size: 16,
+        weight: bold
+      ), red);
+		}
+
+		&-paragraph {
+			@include margin((bottom: 20));
+
+			@include text-style((
+        size: 14,
+        height: 22,
+        white-space: pre-line
+      ), grey);
+		}
+
+		&-link {
+			@include flex();
+			@include height(32);
+			@include padding((top: 16));
+			@include clicable();
+
+			> div {
+				@include flex(center, center);
+				@include circle(32);
+				@include background(red);
+				@include text-color(white);
+
+				transition: transform .3s ease .1s;
+			} // -> >div
+
+			span {
+				@include margin((left: 10));
+
+				@include text-style((
+          size: 11
+        ), grey);
+			}
+
+			&-active {
+				> div {
+					transform: rotate(180deg);
+				}
+			}
+		} // link
+	} // collapse
+
+	&\:step {
+		@include flex(space-between, center);
+		@include width(290);
+		@include height(112);
+		@include margin((
+      top: 50,
+      left: auto,
+      right: auto
+    ));
+
+		&-spacer {
+			@include margin(auto);
+		} // spacer
+
+		&-content {
+			@include flex(center, center);
+			@include direction(column);
+			@include radius(4);
+			@include position(relative);
+			@include width(112, flex);
+			@include height(112);
+			border: rem(1) solid color(grey-200);
+
+			p {
+				@include margin((top: 6));
+
+				@include text-style((
+          size: 7,
+          align: center
+        ), grey);
+
+				span {
+					@include text-style((
+            transform: uppercase
+          ), red);
+				}
+			}
+		} // content
+	} // step
+
+	&\:footer {
+		@include margin((top: 60));
+
+		p {
+			@include text-style((
+        size: 9,
+        align: center
+      ), grey);
+		}
+	} // footer
+
+	._plans {
+		&\:text {
+			@include margin((bottom: 30));
+			@include text-style((
+        size: 18,
+        height: 32,
+        align: center,
+        weight: 600
+      ), cyan);
+		} // text
+	} // plans
+} // offer
+
+.theme {
+  @each $theme in $themes {
+    &\:#{$theme} {
+      .offer {
+        @include __offer-theme(($theme));
+      }
+    }
+  }
+} // theme

@@ -1,0 +1,49 @@
+//
+// Author: OSTON <ti@oston.io>
+// Name: Pomodoro
+// File: app.scss
+// Location: @/assets/sass
+//
+
+._btn {
+	@include flex(center, center);
+	@include height(55);
+	@include width(200);
+	@include radius(4);
+	border: rem(1) solid transparent;
+  @extend %clicable;
+
+	@include text-style((
+    decoration: none,
+    align: center,
+    size: 17,
+    weight: bold
+  ), white);
+
+  &\:loading {
+    @extend %not-clicable;
+
+    span {
+      border: {
+        top: rem(2) solid color(white);
+        left: rem(2) solid transparent;
+        right: rem(2) solid transparent;
+      }
+      @include circle(15);
+
+      @include animation(rotate .5s infinite ease);
+    }
+  } // loading
+
+	@each $color, $text in $buttons {
+		&\:#{$color} {
+			@include background($color);
+      @include text-color($text)
+		}
+	}
+
+  &\:disabled {
+    @extend %not-clicable;
+    @include background(grey-200);
+  } // disabled
+} // _btn

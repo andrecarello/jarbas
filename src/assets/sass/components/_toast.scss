@@ -1,0 +1,48 @@
+//
+// Author: OSTON <ti@oston.io>
+// Name: Vue Base
+// Description: Code for Vue projects
+// File: toast.scss
+// Location: @/assets/sass/components
+//
+
+.toast {
+	@include position(fixed, (
+    left: 0,
+    right: 0,
+    bottom: 0
+  ), 3000);
+	@include margin(horizontal, auto);
+	@include padding((
+    top: 25,
+    left: 20,
+    right: 20,
+    bottom: 25
+  ));
+
+	@include text-style((
+    size: 17,
+    align: center,
+    font: 'Tim Sans'
+  ), white);
+
+	transform: translateY(10px);
+	opacity: 0;
+	visibility: hidden;
+
+	@include transition(all .2s ease);
+
+	&.error {
+		@include background(danger);
+	} // error
+
+	&.success {
+		@include background(dark-green);
+	} // success
+
+	&.active {
+		transform: translateY(0px);
+		opacity: 1;
+		visibility: visible;
+	} // active
+} // toast

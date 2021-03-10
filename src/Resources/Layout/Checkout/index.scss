@@ -1,0 +1,91 @@
+//
+// Author: OSTON <ti@oston.io>
+// Name: Vue Base
+// Description: Code for Vue projects
+// File: index.scss
+// Location: @/Views/Offers
+//
+
+.checkout {
+	&\:header {
+		@include flex(space-between, center);
+		@include position(relative);
+		@include background(white);
+		@include padding(horizontal, 20);
+		@include margin((bottom: 11));
+		@include height(98);
+	} // header
+
+	&\:brand {
+		@include height(22);
+
+		img {
+			@include height(22);
+			@include display(block);
+		} // img
+	} // brand
+
+	&\:steps {
+		@include flex();
+	} // steps
+
+	&\:step {
+		@include circle(32);
+		@include margin((right: 14));
+		@include background(white);
+		border: rem(1) solid color(cyan);
+
+		@include flex(center, center);
+		@include position(relative, 10);
+
+		@include text-style((
+      weight: bold
+    ), cyan);
+
+		&:after {
+			content: '';
+			@include position(absolute, -1);
+			left: calc(100% + 1px);
+			top: calc(50% - 2px);
+			@include height(4);
+			@include width(14);
+			@include background(cyan);
+		}
+
+		&:last-of-type {
+			&:after {
+				@include display(none);
+			}
+		}
+
+		&-active {
+			border-color: color(blue);
+			@include background(blue);
+			@include text-color(white);
+		} // active
+	} // step
+
+	&\:container {
+    @include width(310);
+    @include margin(horizontal, auto);
+	} // container
+
+  &\:title {
+    @include text-style((
+      size: 30,
+      height: 40,
+      weight: bold
+    ), dark-blue);
+  } // title
+
+  &\:subtitle {
+    @include margin((bottom: 40));
+
+    @include text-style((
+      size: 16,
+      height: 24,
+      weight: 400,
+      align: center,
+    ), dark-blue);
+  } // subtitle
+} // checkout

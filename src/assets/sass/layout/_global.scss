@@ -1,0 +1,107 @@
+//
+// Author: OSTON <ti@oston.io>
+// Name: Oi
+// Description: Nuxt styles
+// File: global.scss
+// Location: @/assets/sass/layout
+//
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	outline: none !important;
+} // -> all tags
+
+body {
+	max-width: 100vw;
+	width: 100%;
+	overflow-x: hidden;
+
+	@include font("Tim Sans");
+	@include scrollbar('vertical', 3, #137cba, #30a500, #f7f7f7, tomato);
+
+	* {
+		@include font("Tim Sans");
+		-webkit-overflow-scrolling: touch !important;
+		outline: none !important;
+	}
+
+	a {
+		text-decoration: none;
+	}
+}
+
+._g {
+	&\:disabled {
+		@extend %not-clicable;
+	}
+
+	&\:clicable {
+		@extend %clicable;
+	} // clicable
+} // global
+
+// -> animations
+@include keyframes(dots-jump) {
+	0% {
+		bottom: 0;
+	}
+	40% {
+		bottom: 6px;
+	}
+	80% {
+		bottom: 0;
+	}
+}
+
+@include keyframes(slide) {
+	0%,
+	100% {
+		transform: translateX(-8px);
+	}
+	50% {
+		transform: translateX(8px);
+	}
+}
+
+@include keyframes(rotate) {
+	0% {
+		transform: rotate(0);
+	}
+	100% {
+		transform: rotate(359deg);
+	}
+}
+
+@include keyframes(bubble) {
+	0%,
+	100% {
+		@include circle(0);
+	}
+	50% {
+		@include circle(20);
+	}
+}
+
+@include keyframes(logout) {
+  0% {
+    width: 0;
+  }
+
+  37% {
+    width: 17%;
+  }
+
+  67% {
+    width: 67%;
+  }
+
+  80% {
+    width: 75%;
+  }
+
+  100% {
+    width: 100%;
+  }
+}

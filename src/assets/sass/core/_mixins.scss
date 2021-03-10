@@ -1,0 +1,344 @@
+//
+// Author: OSTON <ti@oston.io>
+// Name: Pomodoro
+// Description: Nuxt styles
+// File: mixins.scss
+// Location: @/assets/sass/core
+//
+
+// MEDIA QUERYS BREAKPOINTS
+@mixin media($breakpoint, $size: min) {
+	@media only screen and (min-width: rem($breakpoint)) {
+		@content;
+	}
+}
+
+// LETRA A
+@mixin animation($animate...) {
+	$max: length($animate);
+	$animations: "";
+
+	@for $i from 1 through $max {
+		$animations: #{$animations + nth($animate, $i)};
+
+		@if $i < $max {
+			$animations: #{$animations + ", "};
+		}
+	}
+	-webkit-animation: $animations;
+	-moz-animation: $animations;
+	-o-animation: $animations;
+	animation: $animations;
+}
+
+@mixin autocomplete($color, $text) {
+	&:-webkit-autofill,
+	&:-webkit-autofill:hover,
+	&:-webkit-autofill:focus,
+	&:-webkit-autofill:active {
+		box-shadow: 0 0 0 100px color($color) inset !important;
+	}
+
+	&:-webkit-autofill {
+		-webkit-text-fill-color: color($text) !important;
+	}
+}
+// LETRA B
+@mixin box-shadow($args...) {
+	box-shadow: $args;
+}
+
+@mixin background($color, $opacity: 1) {
+	@if $opacity < 1 {
+		background-color: rgba(color($color), $opacity);
+	} @else {
+		background-color: color($color);
+	}
+}
+// LETRA C
+@mixin change-svg-color($color) {
+	fill: $color !important;
+	* {
+		fill: $color !important;
+	}
+}
+
+@mixin color($color) {
+	color: color($color);
+}
+
+@mixin circle($x) {
+	height: #{$x}px;
+	width: #{$x}px;
+	border-radius: calc(#{$x}px / 2);
+}
+
+@mixin clicable() {
+	@extend %clicable;
+}
+
+// LETRA D
+// LETRA E
+// LETRA F
+@mixin font($font-name, $imp: false) {
+	font-family: #{$font-name}, Arial, sans-serif if($imp, !important, null);
+}
+@mixin font-size($size, $imp: false) {
+	font-size: #{$size}px if($imp, !important, null);
+	font-size: rem($size) if($imp, !important, null);
+}
+// LETRA G
+// LETRA H
+// LETRA I
+// LETRA J
+// LETRA K
+@mixin keyframes($animationName) {
+	@-webkit-keyframes #{$animationName} {
+		@content;
+	}
+	@-moz-keyframes #{$animationName} {
+		@content;
+	}
+	@-o-keyframes #{$animationName} {
+		@content;
+	}
+	@keyframes #{$animationName} {
+		@content;
+	}
+}
+// LETRA L
+
+@mixin line-clamp($lines: 2) {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: $lines;
+	line-clamp: $lines;
+	text-overflow: ellipsis;
+	overflow: hidden;
+}
+// LETRA M
+
+/// @example
+///   .selector {
+///     @include x-multiple-colored-gradient(
+///         'top',
+///         #f22 0%,
+///         #f2f 15%,
+///         #22f 30%,
+///         #2ff 45%,
+///         #2f2 60%,
+///         #2f2 75%,
+///         #ff2 90%,
+///         #f22 100%
+///     );
+///   }
+///
+@mixin multiple-gradient($args...) {
+	$gradient: ();
+	$pos: nth($args, 1);
+	$pos_newsyntax: ();
+
+	@if not is-valid-keyword-direction($pos) {
+		$pos: "top";
+	}
+
+	// New Syntax
+	@if $pos == "top" {
+		$pos_newsyntax: "to bottom";
+	} @else if $pos == "right" {
+		$pos_newsyntax: "to left";
+	} @else if $pos == "bottom" {
+		$pos_newsyntax: "to top";
+	} @else if $pos == "left" {
+		$pos_newsyntax: "to right";
+	}
+
+	@each $g in $args {
+		@if not is-valid-keyword-direction($g) {
+			$gradient: append($gradient, $g, comma);
+		}
+	}
+
+	background: -webkit-linear-gradient(unquote($pos), $gradient);
+	background: linear-gradient(unquote($pos_newsyntax), $gradient);
+}
+// LETRA N
+// LETRA O
+@mixin opacity($value) {
+	$IEValue: $value * 100;
+	opacity: $value;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=" + $IEValue + ")";
+	filter: alpha(opacity=$IEValue);
+}
+@mixin optional-at-root($sel) {
+	@at-root #{if(not &, $sel, selector-append(&, $sel))} {
+		@content;
+	}
+}
+// LETRA P
+@mixin placeholder {
+	@include optional-at-root("::-webkit-input-placeholder") {
+		@content;
+	}
+
+	@include optional-at-root(":-moz-placeholder") {
+		@content;
+	}
+
+	@include optional-at-root("::-moz-placeholder") {
+		@content;
+	}
+
+	@include optional-at-root(":-ms-input-placeholder") {
+		@content;
+	}
+}
+// LETRA Q
+// LETRA R
+@mixin rotate($deg) {
+	@include transform(rotate(#{$deg}deg));
+}
+// LETRA S
+@mixin scale($scale) {
+	@include transform(scale($scale));
+}
+@mixin skew($x: 0, $y: 0) {
+	@include transform(skew(#{$x}deg, #{$y}deg));
+}
+@mixin scrollbar($direction, $size: 3, $thumb: transparent, $thumb-hover: transparent, $track: transparent, $button: transparent) {
+	&::-webkit-scrollbar {
+		@if $direction == "horizontal" {
+			height: rem($size);
+		}
+
+		@if $direction == "vertical" {
+			width: rem($size);
+		}
+
+		&-button {
+			display: block;
+			height: 0;
+			width: 0;
+			border-radius: 0;
+			background-color: $button;
+
+			&:hover {
+				background-color: darken($button, 10%);
+			}
+		}
+
+		&-thumb {
+			background-color: $thumb;
+			@include box-shadow(none);
+
+			@include transition(all $timing ease);
+
+			&:hover {
+				background-color: $thumb-hover;
+				@include box-shadow(none);
+			}
+		}
+
+		&-track {
+			background-color: $track;
+
+			&:hover {
+				background-color: $track;
+			}
+		}
+	}
+}
+
+// LETRA T
+@mixin transition($args...) {
+	-webkit-transition: $args;
+	-moz-transition: $args;
+	-ms-transition: $args;
+	-o-transition: $args;
+	transition: $args;
+}
+@mixin transform($transforms) {
+	-moz-transform: $transforms;
+	-o-transform: $transforms;
+	-ms-transform: $transforms;
+	-webkit-transform: $transforms;
+	transform: $transforms;
+}
+@mixin translate($x, $y) {
+	@include transform(translate($x, $y));
+}
+@mixin transform-origin($origin) {
+	moz-transform-origin: $origin;
+	-o-transform-origin: $origin;
+	-ms-transform-origin: $origin;
+	-webkit-transform-origin: $origin;
+	transform-origin: $origin;
+}
+// LETRA U
+// LETRA V
+// LETRA Y
+// LETRA Z
+// LETRA W
+
+// CUSTOM FOR THEME
+@mixin offers-change-colors($color1, $color2, $color3) {
+	.offers {
+		&__header {
+			color: $color1;
+		}
+
+		&__item {
+			&--text-left,
+			&--discount-left,
+			&--price-left {
+				background-color: $color2;
+			}
+			small {
+				color: $color3;
+			}
+			&--price {
+				&-right {
+					background-color: $color3;
+				}
+			} // end -> --price
+		} // end -> __item
+	} // end -> offers
+} // end @offers-change-color
+
+@mixin offers-border-color($color1, $color2, $color3, $color4) {
+	.offers {
+		&__header {
+			&:after {
+				@include _offer-border(to left, $color1, $color2, $color3, $color4);
+			}
+		}
+		&__border {
+			@include _offer-border(to right, $color1, $color2, $color3, $color4);
+		}
+	}
+} // end -> @offers-border-color
+
+@mixin offers-owl-color($color1, $color2, $color3, $color4) {
+	.owl {
+		&-dot {
+			background-color: $color1;
+
+			&.active {
+				background-color: $color2;
+			}
+		} // end -> dot
+
+		&-prev {
+			display: none !important;
+		}
+
+		&-next {
+			background-color: $color3 !important;
+
+			&::after,
+			&::before {
+				background-color: $color4;
+			}
+		} // end -> next
+	} // end -> owl
+} // end @offers-owl-color

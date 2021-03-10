@@ -1,0 +1,432 @@
+//
+// Author: OSTON <ti@oston.io>
+// Name: Vue Base
+// Description: Code for Vue projects
+// File: index.scss
+// Location: @/views/_componets/carousel/plans
+//
+
+._plans {
+	@include width(300);
+	@include height(360, min);
+	@include margin((
+    top: 30,
+    left: auto,
+    right: auto,
+    bottom: 30
+  ));
+
+  @include media(360) {
+    @include width(310);
+  }
+
+	@include media (410) {
+		@include width(360);
+	}
+
+  &\:text {
+    @include width(352);
+    @include margin((bottom: 15));
+    @include padding(horizontal, 10);
+
+    @include text-style((
+      size: 17,
+      line-height: 24
+    ), tim-blue);
+  } // text
+
+	&\:item {
+    @include width(352);
+
+		@include background(tim-blue-2);
+		@include radius(4);
+		@include margin((
+      top: 0,
+      left: auto,
+      right: auto,
+      bottom: 35
+    ));
+	} // item
+
+	&\:header {
+		@include height(120);
+		@include background(carouselHeader);
+		border-top-right-radius: rem(4);
+		border-top-left-radius: rem(4);
+		@include position(relative);
+
+		&::after {
+			content: attr(data-after-text);
+			@include position(absolute, (
+        left: 0,
+        right: 0,
+        bottom: 4
+      ));
+
+			@include text-style((
+        style: italic,
+        size: 10,
+        align: center,
+        weight: 100
+      ), white .3);
+		}
+	} // header
+
+	&\:title {
+		@include margin((bottom: 5));
+
+		@include text-style((
+      size: 66,
+      line-height: 81,
+      align: center,
+      weight: 900
+    ), white);
+
+		small {
+			@include block();
+
+			@include text-style((
+        size: 14,
+        weight: 300,
+        line-height: 14
+      ));
+		} // small
+	} // title
+
+	&\:content {
+		@include flex(flex-start, stretch);
+		@include direction(column);
+		@include position(relative, 10);
+		@include height(150, min);
+		@include background(carouselBody);
+		@include padding((
+      left: 15,
+      right: 30
+    ));
+
+		@include media(320) {
+			@include direction(row);
+		}
+
+    @include media(420) {
+      @include padding(horizontal, 30);
+    }
+	} // content
+
+	&\:apps {
+		@include flex(center, center);
+		@include wrap(true);
+		@include height(60);
+		@include width(115);
+		@include margin((
+      top: 12,
+      left: auto,
+      right: auto
+    ));
+
+		&-title {
+			@include width(space);
+
+			@include text-style((
+        size: 11,
+        line-height: 16,
+        align: center
+      ), white);
+		} // title
+
+		&-brand {
+			@include block();
+			@include size(28);
+			@include margin((
+        left: 5,
+        right: 5,
+        bottom: 5
+      ));
+		} // brand
+	} // apps
+
+	&\:price {
+		@include flex(center, center);
+		@include height(55);
+		@include width(207);
+		@include margin((
+      top: 40,
+      left: auto,
+      right: auto,
+      bottom: 0
+    ));
+		@include padding((
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 10
+    ));
+
+		@include text-color(white);
+
+		&-currency {
+			@include text-style((
+        size: 21,
+        weight: 300
+      ));
+		} // currency
+
+		&-unity {
+			@include flex();
+			@include height(70);
+
+			@include text-style((
+        size: 60,
+        weight: 900
+      ));
+		} // unity
+
+		&-tenths {
+			@include margin((top: -20));
+
+			@include text-style((
+        size: 22,
+        weight: 900
+      ));
+		} // tenths
+
+		&-month {
+			@include margin((
+        top: 20,
+        left: -30
+      ));
+
+			@include text-style((size: 13));
+		} // month
+
+		&-text {
+			@include text-style((
+        size: 9,
+        weight: 700,
+        align: center
+      ), white);
+		} // text
+	} // price
+
+	&\:footer {
+		@include margin((top: 43));
+		@include height(0);
+		@include flex(center, center);
+		@include position(relative);
+	} // footer
+
+	&\:button {
+		@include size(50, 205);
+		@include flex(center, center);
+		cursor: pointer;
+		text-decoration: none;
+		@include background(dark-green);
+		@include radius(4);
+		@include margin((
+      top: 0,
+      left: auto,
+      right: auto,
+      bottom: 0
+    ));
+
+		@include text-style((
+      size: 20,
+      weight: 700
+    ), white);
+	} // button
+
+	&\:more {
+		border: rem(1) solid color(white);
+		@include circle(32);
+		@include flex(center, center);
+		@include position(absolute, (
+      right: 11,
+      bottom: 11
+    ));
+
+		@include clicable();
+		transform: rotate(0);
+		transition: all .2s ease;
+
+		.feather-icon {
+      @include text-style((
+        size: 20
+      ), white);
+		}
+
+		&.active {
+			transform: rotate(180deg);
+			border-color: color(dark-green);
+
+			svg {
+				stroke: color(dark-green);
+			}
+		}
+	} // more
+
+	&\:benefits {
+		@include width(screen);
+		@include margin((top: 60));
+
+		&-content {
+			@include margin((top: -10));
+			@include padding(vertical, 45);
+
+			border-radius: 0 0 rem(4 rem(4));
+			@include position(relative);
+
+			$media: (9.45 + 12.51 + 9.09) / 3;
+			$carousel-secondary: #0b2a41;
+
+			@for $i from 1 through 4 {
+				&:nth-child(#{$i}) {
+					background-color: lighten(
+						desaturate(adjust-hue($carousel-secondary,  (($i - 1 + 10) * -1)), $media),
+						 ($i * 10)
+					);
+					z-index: (6 - $i);
+				}
+			}
+
+			p {
+				@include text-style((
+          size: 14,
+          align: center,
+          line-height: 16,
+          weight: 100
+        ), white);
+			}
+
+			a {
+				text-decoration: underline;
+				@include block();
+				@include text-style((
+          size: 10,
+          align: center
+        ), white);
+			}
+
+			ul {
+				list-style: none;
+				@include padding(0);
+				@include margin((
+          top: 10,
+          left: auto,
+          right: auto
+        ));
+
+				li {
+					@include margin((bottom: 10));
+					@include text-style((
+            size: 10,
+            line-height: 16,
+            align: center,
+            weight: 100
+          ), white);
+
+					&:last-of-type {
+						@include margin((bottom: 0));
+					}
+				}
+			}
+		} // content
+	} // benefits
+
+	// slick
+	$slick: '.slick';
+
+	#{$slick} {
+		&-prev,
+		&-next {
+			@include circle(42);
+			top: rem(140);
+			z-index: 8;
+			@include background(lime, .8);
+			@include flex(center, center);
+
+			.feather-icon {
+        @include text-style((
+          size: 30
+        ), white);
+			}
+
+			&:before {
+				content: '';
+				@include display(none);
+			}
+
+      @include media(400) {
+        @include circle(52);
+      }
+		}
+
+		&-prev {
+			@include box-shadow(rem(4) rem(4) rem(10) rgba(0,0,0, .16));
+			left: rem(-10);
+
+			@include media(400) {
+				left: rem(-25);
+			}
+		} // -> prev
+
+		&-next {
+			@include box-shadow(rem(-4) rem(-4) rem(10) rgba(0,0,0, .16));
+			right: rem(-10);
+
+			@include media(400) {
+				right: rem(-25);
+			}
+		} // -> next
+
+		&-disabled {
+			opacity: .5;
+			pointer-events: none;
+			touch-action: none;
+		} // -> disabled
+
+		&-dots {
+			@include flex(center, center, true);
+			@include height(7);
+			@include margin((
+        top: 0,
+        left: auto,
+        right: auto,
+        bottom: 0
+      ));
+			position: static !important;
+
+			li {
+				@include size(7, 23);
+				@include flex(center, center, true);
+				@include margin(0);
+				@include padding(0);
+
+				button {
+					@include circle(7);
+					@include background(black, .3);
+					@include margin((
+            top: 0,
+            left: auto,
+            right: auto,
+            bottom: 0
+          ));
+					@include padding(0);
+					transition: all .1s ease;
+
+					&::before {
+						display: none;
+					}
+				}
+
+				&#{$slick} {
+					&-active {
+						button {
+							@include size(7, 15);
+							@include background(tim-blue);
+						}
+					}
+				}
+			} // li
+		} // dots
+	} // slick
+} // -> plans

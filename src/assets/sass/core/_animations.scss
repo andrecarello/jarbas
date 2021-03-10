@@ -1,0 +1,22 @@
+//
+// Author: OSTON <ti@oston.io>
+// Name: Pomodoro
+// Description: Nuxt styles
+// File: animations.scss
+// Location: @/assets/sass/core
+//
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.key{
+  &\:rotate {
+    animation: rotation 2s infinite ease-in-out;
+  }
+}

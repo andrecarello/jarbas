@@ -1,0 +1,17 @@
+//
+// Author: OSTON <ti@oston.io>
+// Name: Madalena
+// Description: `refactor recarga`
+// File: extends.scss
+// Location: @/assets/sass/layout/
+//
+
+%clicable {
+  cursor: pointer;
+}
+
+%not-clicable {
+  cursor: default;
+  pointer-events: none;
+  touch-action: none;
+}

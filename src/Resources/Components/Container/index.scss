@@ -1,0 +1,13 @@
+//
+// Author: OSTON <ti@oston.io>
+// Name: Vue Base
+// Description: Code for Vue projects
+// File: index.scss
+// Location: @/_components/container
+//
+.container {
+  @include width(1180);
+	@include margin(horizontal, auto);
+
+  @include padding(horizontal, 16);
+} // -> container

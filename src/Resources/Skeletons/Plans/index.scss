@@ -1,0 +1,70 @@
+//
+// Author: OSTON <ti@oston.io>
+// Name: Vue Base
+// Description: Code for Vue projects
+// File: index.scss
+// Location: @/Resources/Skeletons/offer
+//
+._skeleton {
+	&\:plans {
+		@include width(340);
+		@include height(360, min);
+		@include margin((
+      top: 30,
+      left: auto,
+      right: auto,
+      bottom: 30
+    ));
+		@include padding((top: 10));
+		@include background(grey-100);
+		@include box-shadow($elevation rgba(color(black), .2));
+		@include radius($radius);
+
+		&-row {
+			@include background(grey-200);
+			@include radius($radius);
+
+			&:nth-child(1) {
+				@include size(60, 180);
+				@include margin((
+          left: auto,
+          right: auto,
+          bottom: 20
+        ));
+			} // nth1
+
+			&:nth-child(2) {
+				@include size(14, 100);
+				@include margin((
+          left: auto,
+          right: auto,
+          bottom: 10
+        ));
+			} // nth2
+
+			&:nth-child(3) {
+				@include size(10, 240);
+				@include margin((
+          left: auto,
+          right: auto,
+          bottom: 15
+        ));
+			} // nth2
+
+			&:nth-child(4),
+			&:nth-child(5) {
+				@include size(60, 115);
+				@include margin((
+          left: auto,
+          right: auto,
+          bottom: 12
+        ));
+			} // nth2
+
+			&:nth-child(6) {
+				@include size(50, 205);
+				@include margin(horizontal, auto);
+			} // nth2
+		} // row
+	} // offer
+} // skeleton
