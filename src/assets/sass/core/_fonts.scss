@@ -1,11 +1,11 @@
-@each $font, $name, $weight in $fonts {
-  @font-face {
-    font-family: '#{$font}';
-    font-style: normal;
-    font-weight: #{$weight};
-    font-display: swap;
-    // src: url('~@/assets/fonts/#{$name}.ttf') format('ttf'),
-    // url('~@/assets/fonts/#{$name}.woff2') format('woff2'),
-    src: url('~@/assets/fonts/#{$name}.woff') format('woff');
-  }
+@if $fonts {
+	@each $font, $name, $weight in $fonts {
+		@font-face {
+			font-family: '#{$font}';
+			font-style: normal;
+			font-weight: #{$weight};
+			font-display: swap;
+			src: url('~@/assets/fonts/#{$name}.woff') format('woff');
+		}
+	}
 }

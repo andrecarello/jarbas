@@ -1,0 +1,59 @@
+//
+// Author: OSTON <ti@oston.io>
+// Name: Stories
+// File: sizes.scss
+// Location: @/assets/sass/abstract
+//
+
+@mixin height($height: 0, $min: 'false') {
+	@if quote($height) == 'screen' {
+		min-height: 100vh;
+	} @else if quote($height) == 'space' {
+		height: 100%;
+	} @else {
+		$__height: unit($height);
+
+		@if quote($min) == 'vw' or quote($min) == 'vh' {
+			height: $height + $min;
+		} @else if quote($min) == 'max' {
+			max-height: rem($height);
+		} @else if quote($min) == 'min' {
+			min-height: if(unit($height) == "", rem($height), $height);
+			height: auto;
+		} @else {
+			height: if(unit($height) == "", rem($height), $height);
+		}
+	}
+}
+
+@mixin width($min: 0, $flex: 'false') {
+	@if quote(type-of($min)) == 'number' {
+		@if quote($flex) == 'flex' {
+			flex: 0 0 rem($min);
+			max-width: rem($min);
+		} @else if quote($flex) == 'default' {
+			width: rem($min);
+		} @else {
+			width: 100%;
+			max-width: rem($min);
+		}
+	} @else if quote($min) == 'calc' {
+		$rem: rem($flex);
+		width: calc(100% + #{$rem});
+		// width: calc(#{$flex});
+	} @else if quote($min) == 'screen' {
+		width: 100vw;
+		@if quote($flex) == 'flex' {
+			flex: 0 0 100vw;
+		}
+	} @else if quote($min) == 'space' {
+		width: 100%;
+	} @else if quote($min) == 'auto' {
+		width: auto;
+	}
+}
+
+@mixin size($height, $width: $height) {
+	@include height($height);
+	@include width($width);
+}

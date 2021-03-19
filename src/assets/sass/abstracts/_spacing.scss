@@ -1,0 +1,68 @@
+//
+// Author: OSTON <ti@oston.io>
+// Name: Stories
+// File: margin.scss
+// Location: @/assets/sass/abstract
+//
+
+@mixin margin($axis, $size: 0) {
+	@include spacing('margin', $axis, $size);
+}
+
+@mixin padding($axis, $size: 0) {
+	@include spacing('padding', $axis, $size);
+}
+
+@mixin spacing($property, $axis, $size: 0) {
+	@if quote(type-of($axis)) == 'map' {
+		@include spacing__only($property, $axis);
+	} @else if quote(type-of($axis)) == 'number' {
+		@include spacing__default($property, $axis, $size);
+	} @else if quote(type-of($axis)) == 'string' {
+		@if quote($axis) == 'horizontal' or quote($axis) == 'vertical' {
+			@include spacing__symetrical($property, $axis, $size);
+		}
+	}
+}
+
+@mixin spacing__default($property, $size, $sizeX: 0) {
+	@if $sizeX > 0 {
+		#{$property}: rem($size) rem($sizeX);
+	} @else {
+		@if ends-with($size, 'vh') {
+			#{$property}: $size;
+		} @else {
+			#{$property}: rem($size);
+		}
+	}
+}
+
+@mixin spacing__symetrical($property, $axis: horizontal, $spacing: 0) {
+	$__result: if(quote($spacing) == 'auto', auto, rem($spacing));
+
+	@if quote($axis) == 'horizontal' {
+		#{$property}: {
+			left: $__result;
+			right: $__result;
+		}
+	} @else if quote($axis) == 'vertical' {
+		#{$property}: {
+			top: $__result;
+			bottom: $__result;
+		}
+	}
+}
+
+@mixin spacing__only ($property, $list) {
+	@each $prop, $space in $list {
+		@if ends-with($space, 'vh') or ends-with($space, 'vw') {
+			#{$property}: {
+				#{$prop}: $space;
+			}
+		} @else {
+			#{$property}: {
+				#{$prop}: if($space == 'auto', $space, rem($space));
+			}
+		}
+	}
+}

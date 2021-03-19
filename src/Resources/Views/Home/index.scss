@@ -1,69 +1,16 @@
 //
-// Author: OSTON <ti@oston.io>
-// Name: Vue Base
-// Description: Code for Vue projects
+// Author: André <andrelino.cl@gmail.com>
+// Name: Jarbas
 // File: index.scss
 // Location: @/Views/Home
 //
 
-.home {
-	&\:header {
-		@include width(391);
-		@include margin(horizontal, auto);
-		@include padding(horizontal, 16);
-	} // header
+.buttons {
+  @include position(absolute, (
+    bottom: 50,
+    left: 0,
+    right: 0,
+  ), 10);
+  @include flex(center, center);
 
-	&\:brand {
-		@include flex(flex-start, center);
-		@include size(60, auto);
-		@include margin((bottom: 10));
-	} // brand
-
-	&\:banner {
-		$height: 340;
-		$width: 412;
-		height: calc((#{$height} / #{$width}) * 100 * 1vw);
-
-		@include margin((top: 20));
-
-		img {
-			@include block();
-			@include width(screen);
-		}
-	} // banner
-
-	&\:text {
-		@include width(351);
-		@include margin(horizontal, auto);
-
-		@include text-style((
-      size: 17,
-      line-height: 24
-    ), tim-blue);
-	} // text
-
-	.promo {
-		&\:banners {
-			@include flex(flex-start, stretch);
-			@include wrap(true);
-			@include width(366);
-			@include margin((
-        left: auto,
-        right: auto,
-        bottom: 7
-      ));
-
-			> * {
-				@include block();
-				max-width: calc(50% - 14px);
-				flex: 0 0 calc(50% - 14px);
-				@include margin(7);
-			}
-
-			img {
-				@include block();
-				@include width(screen);
-			}
-		} // banners
-	} // promo
-} // home
+} // buttons

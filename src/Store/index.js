@@ -11,7 +11,7 @@ Vue.use(Vuex);
 import { rename } from '@/Helpers/Misc';
 
 const STORAGE = new VuexPersistence({
-  key: '@tim-ofertas',
+  key: '@default',
 	storage: window.localStorage
 });
 

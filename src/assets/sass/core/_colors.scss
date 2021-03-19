@@ -12,83 +12,18 @@ $white: #fff;
 $grey-100: #eeeeee;
 $grey-200: #dedede;
 $grey: #707070;
-$tim-blue: #063b88;
-$cyan: #4BCFFF;
-$blue: #074793;
-$light-blue: #137CBA;
-$dark-blue: #004791;
-$red: #D00B2C;
-$yellow: #FAB932;
-$orange: #DC8200;
-$green: #82C85A;
-$dark-green: #30A500;
+$grey-900: #333;
+$green: #00ae15;
 
 $colors: (
-  // for tag with no bg or text color
-  transparent: transparent,
-
-  // black
-  black: $black,
-
-  // grey
-  grey-100: $grey-100,
-  grey-200: $grey-200,
-  grey: $grey,
-
-  // white
-  white: $white,
-
-  // blue
-  light-blue: $light-blue,
-  blue: $blue,
-  dark-blue: $dark-blue,
-  cyan: $cyan,
-
-  // green
-  green: $green,
-  dark-green: $dark-green,
-
-  // lime
-  lime: #93D64F,
-
-  // red
-  red: $red,
-  danger: tomato,
-
-  // orange
-  orange: $orange,
-
-  // yellow
-  yellow: $yellow,
-
-  // tim
-  tim-blue: $blue,
-  tim-blue-2: #0b2a41,
-
-  // carousel
-  carouselHeader: #153551,
-  carouselBody: #0b2a41,
-
-  // tips
-  tip-primary: #143551,
-  tip-secondary: #2EA500,
-
-  // modal
-  modal: #00163b
+	transparent: transparent,
+	white: $white,
+	grey-100: $grey-100,
+	grey-200: $grey-200,
+	grey: $grey,
+	grey-900: $grey-900,
+	black: $black,
+	green: $green
 );
 
-$themes: (
-  red,
-  yellow,
-  blue,
-  orange,
-  green,
-  light-blue,
-);
-
-$buttons: (
-  green white,
-  dark-green white,
-  white red,
-  red white,
-);
+$buttons: (green white, dark-green white, white red, red white);

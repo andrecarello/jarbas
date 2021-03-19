@@ -38,12 +38,7 @@ $timing: .25s;
 // cria o array de fonts separados por espaco
 // ex: "Proxima Nova" ProximaNova-Regular 400,
 // $font, $name, $local, $weight
-$fonts: (
-  "Tim Sans" TIMSansWeb-Regular 400,
-  "Tim Sans" TIMSansWeb-Medium 500,
-  "Tim Sans" TIMSansWeb-Bold 600,
-  "Tim Sans" TIMSansWeb-Heavy 900,
-);
+$fonts: false;
 
 // create [ WEBFONTS ]
 $open_sans: "Open Sans";

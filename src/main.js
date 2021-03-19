@@ -5,17 +5,13 @@ import Vue from 'vue';
 import App from '@/App.vue';
 import Router from '@/Router';
 import Store from '@/Store';
-import VueGtm from "vue-gtm";
 import { _CONTROLLER } from '@/bootstrap';
 
 // global imports
-import VueFormulate from '@braid/vue-formulate';
-import { pt } from '@braid/vue-formulate-i18n';
-import VueClipboard from 'vue-clipboard2';
 import FeatherIcons from '@/Resources/Components/Icon/index.vue';
 
 // oston global imports
-import InterseptedImage from '@/Resources/Components/Helpers/InterseptedImage/index.vue';
+import IntersectImage from '@/Resources/Components/Helpers/Image/Intersect/index.vue';
 import Image from '@/Resources/Components/Helpers/Image/index.vue';
 
 // settings
@@ -44,14 +40,10 @@ if (ANALYTICS) {
 	Settings.analytics();
 }
 
-// uses
-Vue.use(VueFormulate, { plugins: [ pt ] });
-Vue.use(VueClipboard);
-
 // components
 Vue.component('feather', FeatherIcons);
-Vue.component('oston-image', Image);
-Vue.component('oston-intersepted-image', InterseptedImage);
+Vue.component('load-image', Image);
+Vue.component('load-intersect-image', IntersectImage);
 
 // vue instance
 new Vue({

@@ -1,0 +1,30 @@
+//
+// Author: OSTON <ti@oston.io>
+// Name: Stories
+// File: position.scss
+// Location: @/assets/sass/abstract
+//
+
+@mixin position($position, $list: '', $index: -1) {
+	position: $position;
+
+	@if quote(type-of($list)) == 'map' {
+		@each $property, $value in $list {
+			@if ends-with($value, 'vh') or ends-with($value, 'vw') or ends-with($value, '%') {
+				#{$property}: $value;
+			} @else {
+				#{$property}: rem($value);
+			}
+		}
+	} @else if quote($list) == 'center' {
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	} @else if quote(type-of($list)) == 'number' {
+		z-index: $list;
+	}
+
+	@if $index > -1 {
+		z-index: $index;
+	}
+}

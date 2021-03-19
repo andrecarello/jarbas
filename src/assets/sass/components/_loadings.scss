@@ -1,0 +1,20 @@
+//
+// Author: OSTON <ti@oston.io>
+// Name: Stories
+// File: loadings.scss
+// Location: @/assets/sass/components
+//
+
+.loading {
+    &\:stories { @extend %loading-stories }
+}
+
+%loading-stories {
+    @include position(fixed, (
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0
+    ), 2000);
+    @include background(black, .15);
+}

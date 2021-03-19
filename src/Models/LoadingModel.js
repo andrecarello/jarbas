@@ -1,11 +1,5 @@
 export const defaultState = {
-	loading: false,
-	loadingPlans: false,
-	loadingCollections: false,
-	loadingCollection: false,
-	loadingCategory: false,
-	loadingOffer: false,
-	loadingSearch: false
+	loading: false
 };
 
 export default {
@@ -14,13 +8,7 @@ export default {
 	state: defaultState,
 
 	getters: {
-		loading: (state) => state.loading,
-		loadingPlans: (state) => state.loadingPlans,
-		loadingCollections: (state) => state.loadingCollections,
-		loadingCollection: (state) => state.loadingCollection,
-		loadingCategory: (state) => state.loadingCategory,
-		loadingOffer: (state) => state.loadingOffer,
-		loadingSearch: (state) => state.loadingSearch
+		loading: (state) => state.loading
 	},
 
 	actions: {
@@ -29,24 +17,6 @@ export default {
 		},
 		saveLoading({ commit }, value) {
 			commit('setLoading', value);
-		},
-		saveLoadingPlans({ commit }, value) {
-			commit('setLoadingPlans', value);
-		},
-		saveLoadingCollections({ commit }, value) {
-			commit('setLoadingCollections', value);
-		},
-		saveLoadingCollection({ commit }, value) {
-			commit('setLoadingCollection', value);
-		},
-		saveLoadingCategory({ commit }, value) {
-			commit('setLoadingCategory', value);
-		},
-		saveLoadingOffer({ commit }, value) {
-			commit('setLoadingOffer', value);
-		},
-		saveLoadingSearch({ commit }, value) {
-			commit('setLoadingSearch', value);
 		}
 	},
 
@@ -58,24 +28,6 @@ export default {
 		},
 		setLoading(state, value) {
 			state.loading = value;
-		},
-		setLoadingPlans(state, value) {
-			state.loadingPlans = value;
-		},
-		setLoadingCollections(state, value) {
-			state.loadingCollections = value;
-		},
-		setLoadingCollection(state, value) {
-			state.loadingCollection = value;
-		},
-		setLoadingCategory(state, value) {
-			state.loadingCategory = value;
-		},
-		setLoadingOffer(state, value) {
-			state.loadingOffer = value;
-		},
-		setLoadingSearch(state, value) {
-			state.loadingSearch = value;
 		}
 	}
 };

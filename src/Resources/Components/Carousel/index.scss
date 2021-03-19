@@ -1,0 +1,136 @@
+//
+// Author: André <andrelino.cl@gmail.com>
+// Name: Jarbas
+// File: index.scss
+// Location: @/resources/components/carousel
+//
+._c {
+	&\:carousel {
+		@include position(relative);
+		@include width(560);
+		@include height(100, vh);
+		@include margin(horizontal, auto);
+		@include overflow(hidden);
+
+		&-item {
+			@include position(absolute, (
+        top: 0,
+        left: 0
+      ), 1);
+			@include width(space);
+			@include height(space);
+			opacity: 0;
+			visibility: hidden;
+			@include transform(scale(1.05));
+			@include transition(
+        transform .4s ease,
+        opacity .4s ease,
+        visibility .4s ease
+      );
+
+			&-active {
+				@include transform(scale(1));
+				@include position(absolute, 3);
+				opacity: 1;
+				visibility: visible;
+				@include transition(
+          transform .4s ease,
+          opacity .4s ease,
+          visibility .4s ease
+        );
+			}
+		} // item
+
+		&-image {
+			@include width(space);
+			@include height(75, vh);
+			@include objectfit(cover);
+		} // image
+
+		&-content {
+			@include position(absolute, (
+        left: 0,
+        bottom: 0,
+      ),3);
+			@include height(40, vh);
+			@include width(space);
+			@include background(white);
+			border: {
+				top-left-radius: rem(100);
+			}
+
+			@include padding((
+        top: 10vh,
+        left: 50,
+        right: 50
+      ));
+		} // content
+
+		&-arc {
+			@include position(absolute, (
+        top: -100,
+        right: 0
+      ), 3);
+			@include width(100);
+			@include height(100);
+			@include overflow(hidden);
+			border-right: none;
+			border-bottom: none;
+
+			&::before,
+			&::after {
+				content: '';
+				@include position(absolute);
+			}
+			&::before {
+				right: 0;
+				top: 0;
+				@include background(transparent);
+				@include height(100);
+				@include width(100);
+				border-bottom-right-radius: rem(100);
+				box-shadow: 0 0 0 rem(9999) white;
+			}
+		}
+
+		&-dots {
+			@include flex(center, center);
+			@include position(absolute, (
+        bottom: 35vh,
+        left: 0,
+        right: 0
+      ), 10);
+		} // dots
+
+		&-dot {
+			@include height(8);
+			@include width(8);
+			@include radius(8);
+			@include background(grey-200);
+			@include margin(horizontal, 3);
+			@include transition(all .2s ease);
+
+			&-active {
+				@include width(16);
+				@include background(green);
+			} // active
+		} // dot
+
+		&-title {
+			@include text-style((
+        size: 40,
+        weight: bold,
+        transform: uppercase,
+        align: center
+      ), green);
+		} // title
+
+		&-subtitle {
+			@include text-style((
+        size: 16,
+        transform: uppercase,
+        align: center,
+      ), grey-900);
+		} // subtitle
+	} // carousel
+} // c

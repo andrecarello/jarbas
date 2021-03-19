@@ -1,0 +1,24 @@
+//
+// Author: OSTON <ti@oston.io>
+// Name: Stories
+// File: layout.scss
+// Location: @/assets/sass/abstracts/
+//
+
+@mixin overflow($value) {
+	@if quote(type-of($value)) == 'map' {
+		@each $axis, $size in $value {
+			overlfow-#{$axis}: $value;
+		}
+	} @else {
+		overflow: $value;
+	}
+}
+
+@mixin radius($radius) {
+	border-radius: rem($radius);
+}
+
+@mixin objectfit($type: contain){
+  object-fit: $type;
+}

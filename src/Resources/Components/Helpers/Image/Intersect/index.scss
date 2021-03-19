@@ -1,0 +1,40 @@
+//
+// Author: André <andrelino.cl@gmail.com>
+// Name: Jarbas
+// File: index.scss
+// Location: @/Resources/Components/image/intersect
+//
+
+._intersect {
+	&\:image {
+		@include position(relative);
+	} // -> image
+
+	&\:loading {
+		@include position(absolute, (
+      top: 0,
+      left: 0
+    ), 5);
+		height: 100%;
+		width: 100%;
+		@include background(grey-100);
+		@include flex(center, center);
+
+		> div {
+			@include flex(center, center);
+			@include size(7, 22);
+		}
+
+		span {
+			border: {
+				top: rem(2) solid color(red);
+				left: rem(2) solid rgba(black, .1);
+				right: rem(2) solid rgba(black, .1);
+        bottom: rem(2) solid rgba(black, .1)
+			}
+			@include circle(15);
+
+			@include animation(rotate .5s infinite ease);
+		}
+	} // -> loading
+} // -> intersepted
