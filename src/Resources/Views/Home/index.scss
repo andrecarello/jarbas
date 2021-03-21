@@ -5,12 +5,25 @@
 // Location: @/Views/Home
 //
 
-.buttons {
-  @include position(absolute, (
-    bottom: 50,
-    left: 0,
-    right: 0,
-  ), 10);
+.home {
   @include flex(center, center);
+  @include height(screen);
+  @include width(screen);
 
-} // buttons
+  .button {
+    @include display(inline-block);
+    @include margin(horizontal, 10);
+    @include padding(12, 15);
+    @include radius(4);
+
+    @include background(green);
+
+
+    @include text-style((
+      size: 16,
+      height: 18,
+      transform: uppercase
+    ), white)
+
+  } // buttons
+}

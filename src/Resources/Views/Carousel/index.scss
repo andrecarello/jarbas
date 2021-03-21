@@ -1,0 +1,16 @@
+//
+// Author: André <andrelino.cl@gmail.com>
+// Name: Jarbas
+// File: index.scss
+// Location: @/Views/Home
+//
+
+.buttons {
+  @include position(absolute, (
+    bottom: 50,
+    left: 0,
+    right: 0,
+  ), 10);
+  @include flex(center, center);
+
+} // buttons

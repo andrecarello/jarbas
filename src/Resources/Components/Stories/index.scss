@@ -1,0 +1,32 @@
+//
+// Author: André <andrelino.cl@gmail.com>
+// Name: Jarbas
+// File: index.scss
+// Location: @/resources/components/stories
+//
+
+._c {
+  &\:stories {
+    &-nav {
+      $size: 60;
+
+      @include flex(flex-start, center);
+      @include height($size, min);
+      @include padding(20);
+
+      a {
+        @include flex(center, center);
+        @include circle($size);
+        @include overflow(hidden);
+        @include margin(horizontal, 5);
+        border: rem(1) solid color(green);
+
+        img {
+          @include block();
+          @include circle(($size - 10));
+          @include objectfit(cover);
+        }
+      }
+    } // nav
+  } // stories
+} // c

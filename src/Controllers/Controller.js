@@ -16,8 +16,6 @@ class Controller {
 		self.state = this.state = store.state;
 	}
 
-	user = _.model('auth');
-	msisdn = !!this.user.msisdn ? this.user.msisdn : '51333333333';
 	baseUrl = 'https://api.tim.oston.io/cupomedia/services/1';
 
 	_logout(model) {
@@ -40,20 +38,29 @@ class Controller {
 		return axios(config);
 	}
 
-	_store(model, key, value) {
-		if (key === 'reset') {
-			this.store.dispatch(_.upperFirst(model) + 'Model/' + key);
-		} else {
-			this.store.dispatch(_.upperFirst(model) + 'Model/save' + _.upperFirst(key), value);
-		}
-	}
-
 	dispatch(model, key, value = null) {
+		const $model = _.upperFirst(model) + 'Model';
+		const $type = key === 'reset' ? 'reset' : 'save';
+		const $action = $model + '/' + $type;
+
 		if (typeof key === 'object' && value === null) {
-			const obj = key;
-			Object.keys(obj).map((k) => this._store(model, k, obj[k]));
+			const data = key;
+
+			Object.keys(data).map((key) => {
+				this.store.dispatch($action, {
+					key: key,
+					data: data[key]
+				});
+			});
 		} else {
-			this._store(model, key, value);
+			if ($type === 'reset') {
+				this.store.dispatch($action);
+			} else {
+				this.store.dispatch($action, {
+					key: key,
+					data: value
+				});
+			}
 		}
 	}
 

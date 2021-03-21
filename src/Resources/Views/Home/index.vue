@@ -1,13 +1,7 @@
 <template>
-  <section>
-    <carousel>
-      <template v-slot:actions>
-        <div class="buttons">
-          <button>Assinar</button>
-          <button>Entrar</button>
-        </div>
-      </template>
-    </carousel>
+  <section class="home">
+    <router-link class="button" to="/carousel">Carousel</router-link>
+    <router-link class="button" to="/stories">Stories</router-link>
   </section>
 </template>
 <script src="./index.js"></script>

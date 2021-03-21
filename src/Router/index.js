@@ -9,16 +9,28 @@ import ViewController from '@/Controllers/ViewController';
 Vue.use(VueRouter);
 
 const routes = [
-	{
+  {
 		path: '/',
 		name: 'Home',
 		component: ViewController.load('Home'),
-		meta: {
-			title: PROJECT_NAME + ' - Home',
-			KeepAlive: true,
-			requiresAuth: false,
-			requiresPlan: false
-		}
+		// meta: {
+		// 	title: PROJECT_NAME + ' - Home',
+		// 	KeepAlive: true,
+		// 	requiresAuth: false,
+		// 	requiresPlan: false
+		// }
+	},
+
+  {
+		path: '/carousel',
+		name: 'Carousel',
+		component: ViewController.load('Carousel'),
+	},
+
+  {
+		path: '/stories',
+		name: 'Stories',
+		component: ViewController.load('Stories'),
 	},
 
 	{ path: '*', component: ViewController.load('404') }
