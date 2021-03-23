@@ -5,51 +5,53 @@ export default {
 	name: 'Home',
 
 	data() {
-
-    const $stories = [
+		const $stories = [
 			[
-        {
-          user: 'Colin Lloyd',
-          avatar: 'colin-lloyd-Bd5Vwr8xy1o-unsplash',
-          stories: [
-            {
-              image: 'chris-leipelt-Ugoc3vgPqY4-unsplash',
-              alt: 'Chris Leipelt',
-            },
-            {
-              image: 'colin-lloyd-Bd5Vwr8xy1o-unsplash',
-              alt: 'Colin Lloyd',
-            },
-            {
-              image: 'colin-lloyd-GOBg_iwHb2s-unsplash',
-              alt: 'Colin Lloyd',
-            }
-          ]
-        },
-        {
-          user: 'Jonathan Adams',
-          avatar: 'jonathan-adams-R82QvpwRtic-unsplash',
-          stories: [
-            {
-              image: 'jonathan-adams-R82QvpwRtic-unsplash',
-              alt: 'Jonathan Adams',
-            }
-          ]
-        },
-        {
-          user: 'Charly PN',
-          avatar: 'charly-pn-bLqKgljgpf4-unsplash',
-          stories: [
-            {
-              image: 'toa-heftiba-GwhcTw7I6FY-unsplash',
-              alt: 'Toa Heftiba',
-            },
-            {
-              image: 'charly-pn-bLqKgljgpf4-unsplash',
-              alt: 'Charly PN'
-            }
-          ]
-        }
+				{
+					id: 1,
+					user: 'Colin Lloyd',
+					avatar: 'colin-lloyd-Bd5Vwr8xy1o-unsplash',
+					stories: [
+						{
+							image: 'chris-leipelt-Ugoc3vgPqY4-unsplash',
+							alt: 'Chris Leipelt'
+						},
+						{
+							image: 'colin-lloyd-Bd5Vwr8xy1o-unsplash',
+							alt: 'Colin Lloyd'
+						},
+						{
+							image: 'colin-lloyd-GOBg_iwHb2s-unsplash',
+							alt: 'Colin Lloyd'
+						}
+					]
+				},
+				{
+					id: 2,
+					user: 'Jonathan Adams',
+					avatar: 'jonathan-adams-R82QvpwRtic-unsplash',
+					stories: [
+						{
+							image: 'jonathan-adams-R82QvpwRtic-unsplash',
+							alt: 'Jonathan Adams'
+						}
+					]
+				},
+				{
+					id: 3,
+					user: 'Charly PN',
+					avatar: 'charly-pn-bLqKgljgpf4-unsplash',
+					stories: [
+						{
+							image: 'toa-heftiba-GwhcTw7I6FY-unsplash',
+							alt: 'Toa Heftiba'
+						},
+						{
+							image: 'charly-pn-bLqKgljgpf4-unsplash',
+							alt: 'Charly PN'
+						}
+					]
+				}
 			]
 		];
 
@@ -58,15 +60,17 @@ export default {
 		};
 	},
 
-  mounted() {
-    _.controller('story').set(this.setStories)
-  },
+	mounted() {
+		_.controller('story').set({
+			stories: this.setStories
+		});
+	},
 
 	components: {
 		stories: Stories
 	},
 
-  computed: mapGetters({
-    stories: 'StoryModel/stories'
-  })
+	computed: mapGetters({
+		stories: 'StoryModel/stories'
+	})
 };

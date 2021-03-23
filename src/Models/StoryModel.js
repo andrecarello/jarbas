@@ -1,5 +1,7 @@
 export const initialState = {
-	stories: []
+	stories: [],
+  open: false,
+  initial: 1,
 };
 
 export default {
@@ -8,7 +10,9 @@ export default {
 	state: initialState,
 
 	getters: {
-		stories: (state) => state.stories
+		stories: (state) => state.stories,
+    open: (state) => state.open,
+    initial: (state) => state.initial
 	},
 
 	actions: {

@@ -11,12 +11,25 @@
       $size: 60;
 
       @include flex(flex-start, center);
+      @include overflow(auto);
       @include height($size, min);
       @include padding(20);
+      @include scrollbar(horizontal, 0);
+
+      @include media(768) {
+        @include scrollbar(horizontal, rem(2));
+      }
+
+      &-spacer {
+        @include width(20, flex);
+        @include height(1);
+      } // spacer
 
       a {
         @include flex(center, center);
-        @include circle($size);
+        @include width($size, flex);
+        @include height($size);
+        @include radius($size);
         @include overflow(hidden);
         @include margin(horizontal, 5);
         border: rem(1) solid color(green);
@@ -28,5 +41,144 @@
         }
       }
     } // nav
+
+    &-actions {
+      @include position(
+        absolute,
+        (
+          left: 0,
+          right: 0,
+          bottom: 30
+        ),
+        30
+      );
+      @include flex(center, center);
+
+      > * {
+        @include margin(horizontal, 5);
+      }
+    } // actions
+
+    &-content {
+      @include height(screen);
+      @include width(screen);
+      @include overflow(hidden);
+      @include position(
+        fixed,
+        (
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0
+        ),
+        9999
+      );
+
+      &-inner {
+        @include height(screen);
+        @include position(relative);
+        @include flex();
+        @include transition(margin 0.4s ease-out);
+
+        @include media(768) {
+          width: 9999vw;
+          position: relative;
+        }
+      }
+    }
+
+    ._story {
+      @include position(
+        absolute,
+        (
+          top: 0,
+          left: 0
+        ),
+        1
+      );
+      @include height(screen);
+      @include width(screen, flex);
+      @include flex();
+      @include direction(column);
+      opacity: 0;
+      visibility: hidden;
+
+      &-active {
+        opacity: 1;
+        visibility: visible;
+      } // active
+
+      &\:timeline {
+        @include flex();
+        @include grow(false);
+        @include width(space);
+        @include position(
+          absolute,
+          (
+            top: 0,
+            left: 0,
+            right: 0
+          ),
+          5
+        );
+      }
+
+      &\:slice {
+        @include background(black, 0.25);
+        @include height(4);
+        @include width(space);
+        @include radius(4);
+        @include overflow(hidden);
+        @include margin(
+          (
+            top: 20,
+            left: 10,
+            right: 10
+          )
+        );
+      }
+
+      &\:progress {
+        @include background(green);
+        @include height(4);
+        @include width(0, default);
+        @include radius(4);
+      }
+
+      &\:slide {
+        @include grow(true);
+        @include flex(center, center);
+        @include position(
+          absolute,
+          (
+            top: 0,
+            left: 0
+          ),
+          3
+        );
+
+        &-active {
+          @include z-index(4);
+        } // active
+
+        img {
+          @include height(screen);
+          @include width(screen);
+          object-fit: cover;
+        }
+      } // slide
+
+      &\:caption {
+        @include position(
+          absolute,
+          (
+            left: 0,
+            right: 0,
+            bottom: 70
+          ),
+          4
+        );
+      }
+    } // story
   } // stories
 } // c

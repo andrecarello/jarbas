@@ -21,10 +21,14 @@
 		left: 50%;
 		transform: translate(-50%, -50%);
 	} @else if quote(type-of($list)) == 'number' {
-		z-index: $list;
+    @include z-index($list);
 	}
 
 	@if $index > -1 {
-		z-index: $index;
+    @include z-index($index);
 	}
+}
+
+@mixin z-index($default: 0) {
+    z-index: $default
 }

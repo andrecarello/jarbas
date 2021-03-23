@@ -1,10 +1,9 @@
 import Controller from './Controller';
 
 class StoryController extends Controller {
-	set($payload) {
-		this.dispatch('story', {
-			stories: $payload
-		});
+
+  set($payload) {
+		this.dispatch('story', $payload);
 	}
 }
 

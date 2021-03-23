@@ -32,6 +32,11 @@ const routes = [
 		name: 'Stories',
 		component: ViewController.load('Stories'),
 	},
+  {
+    path: '/fullpage',
+    name: 'Fullpage',
+    component: ViewController.load('Fullpage')
+  },
 
 	{ path: '*', component: ViewController.load('404') }
 ];

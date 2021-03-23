@@ -1,5 +1,6 @@
-import Story from '@/Resources/Components/Stories/Story/index.vue';
 import { mapGetters } from 'vuex';
+
+import Story from '@/Resources/Components/Stories/Story/index.vue';
 
 export default {
 	name: 'Stories',
@@ -18,7 +19,17 @@ export default {
 		console.log(this.stories);
 	},
 
+	methods: {
+		openStories: function(id) {
+			_.controller('story').set({
+				open: true,
+				initial: id
+			});
+		}
+	},
+
 	computed: mapGetters({
-		stories: 'StoryModel/stories'
+		stories: 'StoryModel/stories',
+    initial: 'StoryModel/initial'
 	})
 };
